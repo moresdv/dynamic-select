@@ -1,0 +1,11 @@
+{
+  "select": {
+    "1": GetElementById()
+    // ...
+  },
+  "events": {
+    "1": {
+      "Foo": Add("2", "Bar")
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "name": "dynamic-select",
+  "version": "1.0.0",
+  "description": "Library for dynamic select box options",
+  "main": "main.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tskozel/dynamic-select.git"
+  },
+  "keywords": [
+    "dynamic",
+    "select"
+  ],
+  "author": "Torsten Kozel",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tskozel/dynamic-select/issues"
+  },
+  "homepage": "https://github.com/tskozel/dynamic-select#readme",
+  "dependencies": {
+    "chai": "^4.3.6",
+    "jsdoc": "^3.6.11",
+    "mocha": "^10.0.0"
+  }
+}
