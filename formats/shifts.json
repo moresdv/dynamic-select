@@ -1,7 +1,7 @@
 {
   "select": {
-    "1": GetElementById()
-    // ...
+    "1": GetElementById("select-one"),
+    "2": GetElementById("select-two")
   },
   "events": {
     "1": {
