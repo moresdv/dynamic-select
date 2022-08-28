@@ -12,9 +12,13 @@ class SelectionOrder {
   }
 
   #setup__default() {
+
+    //checks if shifts is an Object
     if (! this.shifts instanceof Object) {
       throw TypeError("Shifts is not an instance of Object");
     }
+
+    //checks if shifts contains elements
     for (let i in Object.keys(this.shifts.select)) {
       if (! this.shifts.select[i] instanceof Element) {
         throw TypeError(`shifts.select.${i} is not an instance of Element`);
@@ -40,6 +44,8 @@ class SelectionOrder {
   }
 
   override_on_selection(handler) {
+
+    //checks if handler is a Function
     if (! handler instanceof Function) {
       throw TypeError("Handler must be a function");
     }
