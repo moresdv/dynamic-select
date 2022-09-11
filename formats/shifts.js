@@ -1,11 +1,14 @@
+const AddChoice = require("../main.js").AddChoice;
+
+/* Assuming that the html has a form with a select field with the id select-1 */
+
 let shifts = {
-  "select": {
-    "1": document.GetElementById("select-one"),
-    "2": document.GetElementById("select-two")
+  "select_elem": {
+    "2": document.getElementById("select-1")
   },
   "events": {
     "1": {
-      "Foo": Add("2", "Bar")
+      "Foo": new AddChoice(this.events["2"], "Bar")
     }
   }
 };
