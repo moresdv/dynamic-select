@@ -6,10 +6,19 @@ if (typeof window == 'undefined') {
   var {window} = dom.window;
 }
 
+function find_key(object, value) {
+  for (let prop in object) {
+    if (object.hasOwnProperty(prop)) {
+      if (object[prop] === value)
+        return prop;
+    }
+  }
+  return "undefined";
+}
+
 class SelectionOrder {
   constructor(shifts, setup=null) {
     this.shifts = shifts;
-
 
     // Handles custom setup function
     if (setup instanceof Function) {
@@ -25,8 +34,6 @@ class SelectionOrder {
       throw TypeError("Shifts is not an instance of Object");
     }
     if (typeof this.shifts.select_elem === "undefined") {
-      /* Todo: In test case 3 of SelectionOrder.test.js if null supplied as shifts
-           TypeError: Cannot read properties of null (reading 'select_elem') */
       throw TypeError("shifts.select_elem undefined");
     } if (typeof this.shifts.events === "undefined") {
       throw TypeError("shifts.events undefined");
@@ -42,7 +49,7 @@ class SelectionOrder {
   }
 
   on_selection(selElem, sel) {
-    if (! typeof this.handlerOverride === "undefined") {
+    if (typeof this.handlerOverride != "undefined") {
       this.handlerOverride(selElem, sel);
     } else {
       this.on_selection__default(selElem, sel);
@@ -50,8 +57,24 @@ class SelectionOrder {
   }
 
   on_selection__default(selElem, sel) {
-    // TODO: default selection handler
-    return ;
+    const elem_name = find_key(this.shifts.select_elem, selElem);
+    if (typeof this.shifts.events[elem_name] === "undefined") {
+      throw Error(`Element "${elem_name}" doesn't have any events`);
+    }
+    if (typeof this.shifts.events[elem_name][sel] === "undefined") {
+      throw Error(`"${sel}" choice is not defined under element "${elem_name}"`);
+    }
+
+    let child;
+    this.shifts.events[elem_name][sel].forEach((elem) => {
+      elem.innerHTML = "";
+    });
+    this.shifts.events[elem_name][sel].forEach((choice) => {
+      child = window.document.createElement("option");
+      child.value = choice.add;
+      child.innerText = choice.add;
+      choice.sE.appendChild(child);
+    });
   }
 
   override_on_selection(handler) {
@@ -63,7 +86,7 @@ class SelectionOrder {
   }
 }
 
-class AddChoice {
+class Choice {
   constructor(selElem, addition) {
     if (! selElem instanceof window.HTMLElement || ! addition instanceof String) {
       throw TypeError("Invalid type of selElem or addition");
@@ -71,10 +94,7 @@ class AddChoice {
     this.sE = selElem;
     this.add = addition;
   }
-
-  get addition() {return this.add}
-  get selElem() {return this.sE}
 }
 
 
-module.exports = { SelectionOrder: SelectionOrder, AddChoice: AddChoice};
+module.exports = { SelectionOrder: SelectionOrder, Choice: Choice};
