@@ -4,7 +4,7 @@ This is a library to help easily set-up dynamic select-boxes. A dynamic select-b
 ### Installation
 The preffered way is to use jsdelivr. Simply add this to your html:
 ```html
-<script src="https://cdn.jsdelivr.net/npm/dynamic-select@1.0.0/main.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dynamic-select@1.1.0/main.js"></script>
 ```
 
 You can use a bundler if you would like to. Just install the dynamic-select [npm package](https://www.npmjs.com/package/dynamic-select).
