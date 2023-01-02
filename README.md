@@ -11,6 +11,8 @@ You can use a bundler if you would like to. Just install the dynamic-select [npm
 ```
 npm i dynamic-select
 ```
+### Documentation
+Visit the [wiki](https://github.com/tskozel/dynamic-select/wiki) for documentation.
 
 ### How it looks in action
 ![preview](./preview.gif)
