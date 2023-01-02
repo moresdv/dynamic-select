@@ -116,12 +116,13 @@ class SelectionOrder {
 }
 
 class Choice {
-  constructor(selElem, addition) {
-    if (! selElem instanceof window.HTMLElement || ! addition instanceof String) {
-      throw TypeError("Invalid type of selElem or addition");
+  constructor(selElem, shown, actual) {
+    if (!selElem instanceof window.HTMLElement || !shown instanceof String || !actual instanceof String) {
+      throw TypeError("Invalid type of arguments supplied to constructor");
     }
     this.sE = selElem;
-    this.add = addition;
+    this.add = shown;
+    this.actual = actual;
   }
   get [Symbol.toStringTag]() {
     return 'Choice';
