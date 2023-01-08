@@ -1,6 +1,6 @@
 {
   "name": "dynamic-select",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Library for dynamic select box options",
   "main": "main.js",
   "scripts": {
