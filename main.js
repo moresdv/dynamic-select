@@ -87,7 +87,7 @@ class SelectionOrder {
     let new_child;
     this.shifts.events[elem_name][sel].forEach((elem) => {
       if (Object.prototype.toString.call(elem) === "[object Ok]") {
-        return; // May cause problems with adding to left-side selectboxes?
+        return;
       }
       elem.sE.innerHTML = "";
       new_child = window.document.createElement("option");
@@ -97,10 +97,10 @@ class SelectionOrder {
     });
     this.shifts.events[elem_name][sel].forEach((choice) => {
       if (Object.prototype.toString.call(choice) === "[object Ok]") {
-        return; // Same as line 90
+        return;
       }
       new_child = window.document.createElement("option");
-      new_child.value = choice.add;
+      new_child.value = choice.actual;
       new_child.innerText = choice.add;
       choice.sE.appendChild(new_child);
     });
